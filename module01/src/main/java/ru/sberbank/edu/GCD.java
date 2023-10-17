@@ -15,8 +15,10 @@ public class GCD implements CommonDivisor {
      */
     @Override
     public int getDivisor(int firstNumber, int secondNumber) {
-        if (secondNumber == 0) {
-            return firstNumber;
+        if (firstNumber == 0 && secondNumber == 0) {
+            throw new IllegalArgumentException("This algo doesn't work with two zero numbers");
+        } else if (secondNumber == 0) {
+            return Math.abs(firstNumber);
         } else {
             return getDivisor(secondNumber, firstNumber % secondNumber);
         }
