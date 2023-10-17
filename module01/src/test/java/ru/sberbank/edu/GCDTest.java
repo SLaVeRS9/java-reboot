@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThrows;
 
 public class GCDTest {
     private static GCD GCD;
-    private static String ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE = "This algo doesn't work with two zero numbers";
+    private final static String ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE = "This algo doesn't work with two zero numbers";
     @Before
     public void init() {
         GCD = new GCD();
