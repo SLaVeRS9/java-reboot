@@ -7,6 +7,7 @@ package ru.sberbank.edu;
  */
 
 public class GCD implements CommonDivisor {
+    private static final String TWO_ZERO_EXCEPTION_MESSAGE = "This algo doesn't work with two zero numbers";
     /**
      * Euclid algo method
      * @param firstNumber first number for euclid algo
@@ -16,7 +17,7 @@ public class GCD implements CommonDivisor {
     @Override
     public int getDivisor(int firstNumber, int secondNumber) {
         if (firstNumber == 0 && secondNumber == 0) {
-            throw new IllegalArgumentException("This algo doesn't work with two zero numbers");
+            throw new IllegalArgumentException(TWO_ZERO_EXCEPTION_MESSAGE);
         } else if (secondNumber == 0) {
             return Math.abs(firstNumber);
         } else {
