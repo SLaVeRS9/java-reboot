@@ -40,8 +40,8 @@ public class Person implements Comparable<Person>{
         if(this.equals(o))
             return 0;
         if(this.city.compareTo(o.city) == 0) {
-            return this.name.compareTo(o.name);
+            return this.name.compareToIgnoreCase(o.name);
         }
-        return this.city.compareTo(o.city);
+        return this.city.compareToIgnoreCase(o.city);
     }
 }
