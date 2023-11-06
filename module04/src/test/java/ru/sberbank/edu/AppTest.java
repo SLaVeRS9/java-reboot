@@ -4,12 +4,14 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
+public class AppTest
+    extends TestCase {
     /**
      * Create the test case
      *
@@ -33,6 +35,15 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+        List<Integer> myArrList = new ArrayList<>();
+        myArrList.add(4);
+        myArrList.add(7);
+        myArrList.add(3);
+        myArrList.add(6);
+        myArrList.sort(new CustomDigitComparator());
+        int firstEl = myArrList.get(0);
+        int thirdEl = myArrList.get(2);
+        assertEquals(4, firstEl);
+        assertEquals(3, thirdEl);
     }
 }
