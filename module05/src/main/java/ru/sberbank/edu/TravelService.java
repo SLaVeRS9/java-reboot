@@ -18,7 +18,10 @@ public class TravelService {
      * @throws IllegalArgumentException if city already exists
      */
     public void add(CityInfo cityInfo) {
-        // do something
+        if(cities.contains(cityInfo)) {
+            throw new IllegalArgumentException("city already exists");
+        }
+        cities.add(cityInfo);
     }
 
     /**
