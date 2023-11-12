@@ -18,7 +18,10 @@ public class TravelService {
      * @throws IllegalArgumentException if city already exists
      */
     public void add(CityInfo cityInfo) {
-        // do something
+        if(cities.contains(cityInfo)) {
+            throw new IllegalArgumentException("city already exists");
+        }
+        cities.add(cityInfo);
     }
 
     /**
@@ -28,14 +31,19 @@ public class TravelService {
      * @throws IllegalArgumentException if city doesn't exist
      */
     public void remove(String cityName) {
-        // do something
+        boolean isNotCityExistInList = cities.stream().noneMatch(cn -> cn.getName().equals(cityName));
+        if (isNotCityExistInList) {
+            throw new IllegalArgumentException("city doesn't not exists");
+        }
+        List<CityInfo> city = cities.stream().filter(cityInfo -> cityInfo.getName().equals(cityName)).toList();
+        cities.removeAll(city);
     }
 
     /**
      * Get cities names.
      */
     public List<String> citiesNames() {
-        return null;
+        return cities.stream().map(CityInfo::getName).toList();
     }
 
     /**
