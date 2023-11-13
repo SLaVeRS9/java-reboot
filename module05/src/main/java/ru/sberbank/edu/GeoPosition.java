@@ -38,9 +38,8 @@ public class GeoPosition {
         // parse and set latitude and longitude in radian
         double latitudeGraduatesInDec = convertLatitudeGeoGraduatesToDecGraduates(latitudeGraduates);
         double longitudeGraduatesInDec = convertLongitudeGeoGraduatesToDecGraduates(longitudeGraduates);
-        latitude = Math.toRadians(latitudeGraduatesInDec);
-        longitude = Math.toRadians(longitudeGraduatesInDec);
-
+        latitude = roundToSixSignsAfterPoint(Math.toRadians(latitudeGraduatesInDec));
+        longitude = roundToSixSignsAfterPoint(Math.toRadians(longitudeGraduatesInDec));
     }
 
     /**
@@ -51,14 +50,7 @@ public class GeoPosition {
             System.out.println(Integer.parseInt(longitudeGraduates));
             return Integer.parseInt(longitudeGraduates);
         } else if (longitudeGraduates.matches("^-?\\d{1,3}\\(\\d{1,2}'\\d{1,2}''\\)$")) {
-            String[] gradMinSecArr = longitudeGraduates.split("\\(|'|\\)");
-
-            Double grad = Double.parseDouble(gradMinSecArr[0]);
-            Double min = Double.parseDouble(gradMinSecArr[1]);
-            Double sec = Double.parseDouble(gradMinSecArr[2]);
-
-            double decGrad = grad + min/MIN_IN_HOUR + sec/SEC_IN_HOUR;
-            return decGrad;
+            return parseStringGraduatesToDecDouble(longitudeGraduates);
         } else {
             throw new IllegalArgumentException(INCORRECT_FORMAT_EX);
         }
@@ -87,9 +79,18 @@ public class GeoPosition {
         double grad = Double.parseDouble(gradMinSecArr[0]);
         double min = Double.parseDouble(gradMinSecArr[1]);
         double sec = Double.parseDouble(gradMinSecArr[2]);
+        double decGrad;
+        if (grad < 0) {
+            decGrad = grad - min/MIN_IN_HOUR - sec/SEC_IN_HOUR;
+        } else {
+            decGrad = grad + min/MIN_IN_HOUR + sec/SEC_IN_HOUR;
+        }
 
-        double decGrad = grad + min/MIN_IN_HOUR + sec/SEC_IN_HOUR;
-        return decGrad;
+        return roundToSixSignsAfterPoint(decGrad);
+    }
+
+    private static double roundToSixSignsAfterPoint(double number) {
+        return (int)(number * 1000000) / 1000000.0;
     }
 
     // getters and toString
