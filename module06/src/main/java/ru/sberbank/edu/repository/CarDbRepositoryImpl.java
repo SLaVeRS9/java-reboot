@@ -7,7 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 
 public class CarDbRepositoryImpl implements CarRepository {
     private final Connection connection;
@@ -42,6 +44,16 @@ public class CarDbRepositoryImpl implements CarRepository {
     }
 
     @Override
+    public Set<Car> createAll(Collection<Car> cars) {
+        return null;
+    }
+
+    @Override
+    public Set<Car> findAll() {
+        return null;
+    }
+
+    @Override
     public Optional<Car> findById(String id) throws SQLException {
         // validation
         int rowsCount = countRowsById(id);
@@ -64,6 +76,11 @@ public class CarDbRepositoryImpl implements CarRepository {
         return null;
     }
 
+    @Override
+    public Boolean deleteAll() {
+        return null;
+    }
+
     private int countRowsById(String id) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM car where id = ?");
         preparedStatement.setString(1, id);
@@ -73,5 +90,10 @@ public class CarDbRepositoryImpl implements CarRepository {
             rowCount = resultSet.getInt(1);
         }
         return rowCount;
+    }
+
+    @Override
+    public Set<Car> findByModel(String model) {
+        return null;
     }
 }
