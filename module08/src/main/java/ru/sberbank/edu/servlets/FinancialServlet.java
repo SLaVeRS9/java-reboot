@@ -43,7 +43,6 @@ public class FinancialServlet extends HttpServlet {
                 req.setAttribute("title", ERROR_TITLE);
                 req.setAttribute("description", MIN_INVESTMENT_AMOUNT_DESCRIPTION);
                 req.getRequestDispatcher("calcResult.jsp").forward(req, resp);
-                return;
             }
 
             Integer result = CalculateReturnOfInvestmentService.calculate(amount, interestRate, yearsAmount);
