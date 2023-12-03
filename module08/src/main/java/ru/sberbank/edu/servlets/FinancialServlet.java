@@ -33,26 +33,30 @@ public class FinancialServlet extends HttpServlet {
             String amountStr = req.getParameter("amount");
             String interestRateStr = req.getParameter("interestRate");
             String yearsAmountStr = req.getParameter("yearsAmount");
-            System.out.println(amountStr);
-            System.out.println(interestRateStr);
-            System.out.println(yearsAmountStr);
+
             Integer amount = Integer.valueOf(amountStr);
             Integer interestRate = Integer.valueOf(interestRateStr);
             Integer yearsAmount = Integer.valueOf(yearsAmountStr);
 
             if(amount < MIN_INVESTMENT_AMOUNT) {
+                System.out.println("amount < MIN_INVESTMENT_AMOUNT");
                 req.setAttribute("title", ERROR_TITLE);
                 req.setAttribute("description", MIN_INVESTMENT_AMOUNT_DESCRIPTION);
                 req.getRequestDispatcher("calcResult.jsp").forward(req, resp);
+                return;
             }
+
             Integer result = CalculateReturnOfInvestmentService.calculate(amount, interestRate, yearsAmount);
             String resultDescription = String.format(RESULT_DESCRIPTION, result);
-            req.setAttribute("title", ERROR_TITLE);
+
+            req.setAttribute("title", RESULT_TITLE);
             req.setAttribute("description", resultDescription);
+
             req.getRequestDispatcher("calcResult.jsp").forward(req, resp);
         } catch (Exception e) {
             req.setAttribute("title", ERROR_TITLE);
             req.setAttribute("description", RESULT_DESCRIPTION_ERROR);
+
             req.getRequestDispatcher("calcResult.jsp").forward(req, resp);
         }
     }
