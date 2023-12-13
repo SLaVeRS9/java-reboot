@@ -56,6 +56,16 @@ public class CarDbRepositoryImpl implements CarRepository {
     }
 
     @Override
+    public Set<Car> createAll(Collection<Car> cars) {
+        return null;
+    }
+
+    @Override
+    public Set<Car> findAll() {
+        return null;
+    }
+
+    @Override
     public Optional<Car> findById(String id) throws SQLException {
         // validation
         int rowsCount = countRowsById(id);
@@ -84,6 +94,11 @@ public class CarDbRepositoryImpl implements CarRepository {
         deleteByIdPreStmt.setString(1, id);
         int affectedRows = deleteByIdPreStmt.executeUpdate();
         return affectedRows > 0;
+    }
+
+    @Override
+    public Boolean deleteAll() {
+        return null;
     }
 
     private int countRowsById(String id) throws SQLException {
