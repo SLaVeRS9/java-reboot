@@ -39,4 +39,15 @@ public class CarServiceImpl implements CarService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void deleteCar(String id) {
+        try {
+            carRepository.deleteById(id);
+        } catch (SQLException e) {
+            System.out.print("log note:");
+            System.out.print("deleteCar failed on car with id = " + id + " by reason " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
 }
