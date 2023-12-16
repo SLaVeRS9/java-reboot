@@ -26,11 +26,27 @@ public class CarServiceImpl implements CarService {
         updateCarModel(car, newModel);
     }
 
+    @Override
+    public void deleteCar(String id) {
+
+    }
+
     private void updateCarModel(Car car, String newModel) {
         car.setModel(newModel);
         try {
             carRepository.createOrUpdate(car);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteCar(String id) {
+        try {
+            carRepository.deleteById(id);
+        } catch (SQLException e) {
+            System.out.print("log note:");
+            System.out.print("deleteCar failed on car with id = " + id + " by reason " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
