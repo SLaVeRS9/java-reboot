@@ -9,7 +9,6 @@
 
     <artifactId>module10</artifactId>
     <packaging>war</packaging>
-
     <name>module10</name>
 
     <properties>
