@@ -1,0 +1,7 @@
+POST localhost:8099/users/add
+Content-Type: application/json
+
+{
+  "name": "added_user",
+  "age": 27
+}

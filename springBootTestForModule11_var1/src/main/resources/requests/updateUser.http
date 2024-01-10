@@ -1,0 +1,8 @@
+PATCH localhost:8099/users/edit
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "edited_user",
+  "age": 127
+}
