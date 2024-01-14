@@ -1,0 +1,4 @@
+DELETE localhost:8099/users/remove
+Content-Type: application/x-www-form-urlencoded
+
+id=1
