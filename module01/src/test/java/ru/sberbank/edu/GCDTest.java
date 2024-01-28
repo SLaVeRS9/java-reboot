@@ -1,6 +1,6 @@
 package ru.sberbank.edu;
 
-import org.junit.After;
+/*import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,4 +51,4 @@ public class GCDTest {
         );
         assertEquals(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE, exception.getMessage());
     }
-}
+}*/

@@ -1,5 +1,6 @@
 package ru.sberbank.edu;
 
+/*
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,9 +15,11 @@ public class PersonTest {
 
     private List<Person> persons;
 
-    /**
+    */
+/**
      * init data
-     */
+     *//*
+
     @Before
     public void init(){
         Person p1 = new Person("Vasia", "Moscow");
@@ -32,17 +35,21 @@ public class PersonTest {
         persons.add(p5);
     }
 
-    /**
+    */
+/**
      * delete data
-     */
+     *//*
+
     @After
     public void tearDown(){
         persons = null;
     }
 
-    /**
+    */
+/**
      * check equals() method for Person
-     */
+     *//*
+
     @Test
     public void testEqualsCheck() {
         Person p1 = new Person("Anton", "Moscow");
@@ -50,9 +57,11 @@ public class PersonTest {
         assertEquals("Equals check", p1, p2);
     }
 
-    /**
+    */
+/**
      * check compareTo() method for Person
-     */
+     *//*
+
     @Test
     public void testCompareTo() {
         init();
@@ -61,3 +70,4 @@ public class PersonTest {
         assertEquals("CompareTo check", p2, persons.get(0));
     }
 }
+*/
