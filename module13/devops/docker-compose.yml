@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16.1
+    restart: always
+    environment:
+      POSTGRES_DB: "module13db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: 1
+    volumes:
+      - TestVolume:/var/lib/module13/postgres
+    ports:
+      - "5431:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8079:8080
+
+  service:
+    image: module13-0.0.1
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
+    ports:
+      - 8088:8088
+    depends_on:
+      - db
+      - adminer
+
+volumes:
+  TestVolume:
+    external: true
